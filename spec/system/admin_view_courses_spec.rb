@@ -48,7 +48,7 @@ describe 'Admin view courses' do
     expect(page).to have_content('Nenhum curso disponível')
   end
 
-  xit 'and return to home page' do
+  it 'and return to home page' do
     Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
                    code: 'RUBYBASIC', price: 10,
                    enrollment_deadline: '22/12/2033')
@@ -60,7 +60,7 @@ describe 'Admin view courses' do
     expect(current_path).to eq root_path
   end
 
-  xit 'and return to promotions page' do
+  it 'and return to promotions page' do
     Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
                    code: 'RUBYBASIC', price: 10,
                    enrollment_deadline: '22/12/2033')
