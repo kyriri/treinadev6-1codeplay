@@ -21,7 +21,7 @@ describe 'Admin view courses' do
     expect(page).to have_content('R$ 20,00')
   end
 
-  xit 'and view details' do
+  it 'and view details' do
     Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
                    code: 'RUBYBASIC', price: 10,
                    enrollment_deadline: '22/12/2033')
@@ -37,7 +37,7 @@ describe 'Admin view courses' do
     expect(page).to have_content('Ruby on Rails')
     expect(page).to have_content('Um curso de Ruby on Rails')
     expect(page).to have_content('RUBYONRAILS')
-    #expect(page).to have_content('R$ 20,00')
+    expect(page).to have_content('R$ 20,00')
     expect(page).to have_content('20/12/2033')
   end
 
