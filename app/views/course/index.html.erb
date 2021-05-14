@@ -1,12 +1,16 @@
-<% @courses.each do |course| %>
-
-<div>
-<h2><%= link_to course.name, course  %></h2>
-<h3><%= course.description %></h3>
-<h3><%= course.code %></h3>
-<h3><%= "R$ %0.2f" % [course.price] %></h3>
-
-</div>
-
+<% if @courses.size == 0 %>
+  <div>
+  Nenhum curso disponível
+  </div>
+<% else %>
+  <% @courses.each do |course| %>
+  <div>
+  <h2><%= link_to course.name, course  %></h2>
+  <h3><%= course.description %></h3>
+  <h3><%= course.code %></h3>
+  <h3><%= "R$ %0.2f" % [course.price] %></h3>
+  </div>
+  <% end %>
 <% end %>
+
 <%#= link_to 'Voltar', root_path %>

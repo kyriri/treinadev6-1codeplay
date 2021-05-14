@@ -41,7 +41,7 @@ describe 'Admin view courses' do
     expect(page).to have_content('20/12/2033')
   end
 
-  xit 'and no course is available' do
+  it 'and no course is available' do
     visit root_path
     click_on 'Cursos'
 
