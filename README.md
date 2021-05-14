@@ -1,24 +1,10 @@
-# README
+# Codeplay - a web app for listing courses
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[Campus Code](https://campuscode.com.br/) is a bootcamp school that trains jr web developers on behalf of partner companies. Their program called **Treinadev** happens 4-5 times a year, lasts 2,5 months, and selects around 20 students among those who complete code challenges.
 
-Things you may want to cover:
+Codeplay is the first project for Treinadev 6 (May 2021): it's a Ruby on Rails web app.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Learning outcomes:
+- introduction to Github's *Issues* and *Projects* functionality
+- starting a Rails project from scratch
+- basic CRUD implementation
