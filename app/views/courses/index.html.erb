@@ -8,7 +8,7 @@
   <h2><%= link_to course.name, course  %></h2>
   <h3><%= course.description %></h3>
   <h3><%= course.code %></h3>
-  <h3><%= "R$ %0.2f" % [course.price] %></h3>
+  <h3><%= number_to_currency course.price, unit: 'R$', separator: ',', delimiter: '.', format: '%u %n' %></h3>
   </div>
   <% end %>
 <% end %>
