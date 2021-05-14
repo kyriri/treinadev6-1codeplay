@@ -3,6 +3,7 @@
 <h3><%= @course.description %></h3>
 <h3><%= @course.code %></h3>
 <h3><%= number_to_currency @course.price, unit: 'R$', separator: ',', delimiter: '.', format: '%u %n' %></h3>
+<h3><%= @course.enrollment_deadline.strftime('%d/%m/%Y') %></h3>
 </div>
 
 <%= link_to 'Voltar', courses_path %>
