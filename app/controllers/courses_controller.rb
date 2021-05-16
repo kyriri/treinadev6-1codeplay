@@ -10,4 +10,15 @@ class CoursesController < ApplicationController
   def new
     @course = Course.new
   end
+
+  def create
+    @course = Course.new(params[:course].permit(:name, 
+                                       :description,
+                                       :code,
+                                       :price,
+                                       :enrollment_deadline,
+                                       ))
+    @course.save
+    redirect_to @course
+  end
 end
