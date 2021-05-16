@@ -1,7 +1,5 @@
-<% if @courses.size == 0 %>
-  <div>
-  Nenhum curso disponível
-  </div>
+<% if @courses.empty? %>
+  <div>Nenhum curso disponível</div>
 <% else %>
   <% @courses.each do |course| %>
   <div>
