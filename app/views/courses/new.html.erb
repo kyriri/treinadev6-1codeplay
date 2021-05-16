@@ -1,0 +1,20 @@
+<%= form_for @course do |f| %>
+  <%= f.label :name, 'Nome' %>
+  <%= f.text_field :name %>
+
+  <%= f.label :description, 'Descrição' %>
+  <%= f.text_area :description %>
+
+  <%= f.label :description, 'Código' %>
+  <%= f.text_area :code %>
+
+  <%= f.label :description, 'Preço' %>
+  <%= f.text_area :price %>
+
+  <%= f.label :description, 'Data limite de matrícula' %>
+  <%= f.text_area :enrollment_deadline %>
+
+  <%= f.submit 'Criar curso' %>
+<% end %>
+
+<%= link_to 'Voltar', courses_path %>
