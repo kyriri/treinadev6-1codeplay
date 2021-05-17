@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Instructor do
   context 'validation' do
-    xit 'attributes cannot be blank' do
+    it 'attributes cannot be blank' do
       new_instructor = Instructor.new
 
       new_instructor.valid?

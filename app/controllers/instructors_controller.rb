@@ -21,6 +21,21 @@ class InstructorsController < ApplicationController
     end
   end
 
+  def edit
+    @instructor = Instructor.find(params[:id])
+  end
+
+  def update
+    @instructor = Instructor.find(params[:id])
+
+    if @instructor.update(instructor_params)
+      redirect_to @instructor
+    else
+      flash[:alert] = @instructor.errors.full_messages.join(" - ") # TODO can we make create and update actions DRYer?
+      render :new
+    end
+  end
+
   private
 
   def instructor_params
