@@ -1,0 +1,23 @@
+<%# FIXME : field types %>
+
+<%= form_for @course do |f| %>
+  <%= f.label :name, 'Nome' %><br>
+  <%= f.text_field :name %><br>
+
+  <%= f.label :description, 'Descrição' %><br>
+  <%= f.text_area :description %><br>
+
+  <%= f.label :code, 'Código' %><br>
+  <%= f.text_field :code %><br>
+
+
+  <%= f.label :price, 'Preço' %><br>
+  <%= f.text_field :price %><br>
+
+  <%= f.label :enrollment_deadline, 'Data limite de matrícula' %><br>
+  <%= f.text_field :enrollment_deadline %><br>
+
+  <%= f.submit 'Salvar' %>
+<% end %>
+
+<%= link_to 'Voltar', courses_path %>

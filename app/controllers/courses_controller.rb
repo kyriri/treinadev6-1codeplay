@@ -21,9 +21,32 @@ class CoursesController < ApplicationController
     end
   end
 
+  def edit
+    @course = Course.find(params[:id])
+  end
+
+  def update
+    @course = Course.find(params[:id])
+    if @course.update(course_params)
+      redirect_to @course
+    else
+      flash[:alert] = @course.errors.full_messages.join(" - ") # TODO can we make create and update actions DRYer?
+      render :new
+    end
+  end
+
+  # def destroy
+  #   if @course = Course.destroy(params[:id])
+  #     redirect_to courses_path
+  #   else
+  #     flash[:alert] = "Não foi possível apagar o registro" 
+  #     render :new
+  #   end
+  # end
+
   private
 
-  def course_params
+  def course_params # FIXME what's the effect of adding #require ?
     params[:course].permit(:name, 
       :description,
       :code,
