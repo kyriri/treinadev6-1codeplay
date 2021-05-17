@@ -36,6 +36,15 @@ class InstructorsController < ApplicationController
     end
   end
 
+  def destroy
+    if @instructor = Instructor.destroy(params[:id])
+      redirect_to instructors_path
+    else
+      flash[:alert] = "Não foi possível apagar o registro" 
+      render :new
+    end
+  end
+
   private
 
   def instructor_params
