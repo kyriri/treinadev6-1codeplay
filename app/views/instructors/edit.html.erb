@@ -1,7 +1,7 @@
 <%= form_for @instructor do |f| %>
   <div>
     <%= f.label :profile_picture, 'Foto de perfil' %><br>
-    <%= f.text_field :profile_picture %>
+    <%= f.file_field :profile_picture %>
   </div>
   <div>
     <%= f.label :name, 'Nome' %><br>
