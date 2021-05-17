@@ -35,14 +35,14 @@ class CoursesController < ApplicationController
     end
   end
 
-  # def destroy
-  #   if @course = Course.destroy(params[:id])
-  #     redirect_to courses_path
-  #   else
-  #     flash[:alert] = "Não foi possível apagar o registro" 
-  #     render :new
-  #   end
-  # end
+  def destroy
+    if @course = Course.destroy(params[:id])
+      redirect_to courses_path
+    else
+      flash[:alert] = "Não foi possível apagar o curso" 
+      render :new
+    end
+  end
 
   private
 
