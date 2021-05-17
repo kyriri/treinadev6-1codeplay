@@ -5,6 +5,6 @@
 Codeplay is the first project for Treinadev 6 (May 2021): it's a Ruby on Rails web app.
 
 Learning outcomes:
-- introduction to Github's *Issues* and *Projects* functionality
 - starting a Rails project from scratch
 - basic CRUD implementation
+- introduction to Github's *Issues* and *Projects* functionality (the original assignment was published as a series of issues on the [Lesson's repo](https://github.com/TreinaDev/codeplay/issues))
