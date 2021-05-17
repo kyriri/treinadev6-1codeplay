@@ -5,7 +5,7 @@ describe 'Admin updates instructor' do
     Instructor.create!(name: 'Andy Carlos', 
                        email: 'andy@earth.com',
                        bio: 'Passionate of stretching, former Cirque du Soleil performer', 
-                       profile_picture: 'https://mypicture.com/me.jpg',
+                      #  profile_picture: 'https://mypicture.com/me.jpg',
                       )
     visit root_path
     click_on 'Professores'
@@ -15,20 +15,20 @@ describe 'Admin updates instructor' do
     fill_in 'Nome', with: 'Anderson Carlos'
     fill_in 'Descrição', with: 'Retired acrobatics instructor'
     fill_in 'Email', with: 'acarlos@coldmail.com'
-    fill_in 'Foto de perfil', with: 'Empty'
+    # fill_in 'Foto de perfil', with: 'Empty'
     click_on 'Salvar'
 
     expect(page).to have_content('Anderson Carlos')
     expect(page).to have_content('Retired acrobatics instructor')
     expect(page).to have_content('acarlos@coldmail.com')
-    expect(page).to have_content('Empty')
+    # expect(page).to have_content('Empty')
   end
 
   scenario 'and must fill name and email' do
     Instructor.create!(name: 'Andy Carlos', 
                        email: 'andy@earth.com',
                        bio: 'Passionate of stretching, former Cirque du Soleil performer', 
-                       profile_picture: 'https://mypicture.com/me.jpg',
+                      #  profile_picture: 'https://mypicture.com/me.jpg',
                       )
     visit root_path
     click_on 'Professores'
