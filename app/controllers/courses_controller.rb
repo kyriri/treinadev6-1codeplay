@@ -13,8 +13,12 @@ class CoursesController < ApplicationController
 
   def create
     @course = Course.new(course_params)
-    @course.save
-    redirect_to @course
+    if @course.save
+      redirect_to @course
+    else
+      flash[:alert] = @course.errors.full_messages.join(" - ")
+      render :new
+    end
   end
 
   private
