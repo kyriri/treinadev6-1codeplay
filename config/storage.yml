@@ -1,0 +1,11 @@
+#as per Rails Guides: https://guides.rubyonrails.org/active_storage_overview.html
+
+local:
+  service: Disk
+  root: <%= Rails.root.join("storage") %>
+
+test:
+  service: Disk
+  root: <%= Rails.root.join("tmp/storage") %>
+
+# TODO do I need to implement anything of the section 2.6?
