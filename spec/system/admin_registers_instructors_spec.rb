@@ -18,7 +18,7 @@ describe 'Admin registers instructors' do
     fill_in 'Descrição', with: 'Especialista back-end Ruby on Rails'
     fill_in 'Email', with: 'c.maria@ggmail.com'
     fill_in 'Foto de perfil', with: 'https://www.mypic.com.br/maria.jpg'
-    click_on 'Cadastrar Professor'
+    click_on 'Cadastrar professor'
 
     expect(current_path).to eq(instructor_path(Instructor.last))
     expect(page).to have_content('Carla Maria')
@@ -42,7 +42,7 @@ describe 'Admin registers instructors' do
     fill_in 'Nome', with: ''
     fill_in 'Email', with: ''
     fill_in 'Foto de perfil', with: ''
-    click_on 'Cadastrar Professor'
+    click_on 'Cadastrar professor'
 
     expect(page).to have_content('não pode ficar em branco', count: 2)
   end
@@ -59,7 +59,7 @@ describe 'Admin registers instructors' do
     click_on 'Professores'
     click_on 'Registrar um Professor'
     fill_in 'Email', with: 'andy@earth.com'
-    click_on 'Cadastrar Professor'
+    click_on 'Cadastrar professor'
 
     expect(page).to have_content('já cadastrado em outro registro')
   end

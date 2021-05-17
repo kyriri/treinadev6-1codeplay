@@ -16,7 +16,7 @@ describe 'Admin updates instructor' do
     fill_in 'Descrição', with: 'Retired acrobatics instructor'
     fill_in 'Email', with: 'acarlos@coldmail.com'
     fill_in 'Foto de perfil', with: 'Empty'
-    click_on 'Enviar'
+    click_on 'Salvar'
 
     expect(page).to have_content('Anderson Carlos')
     expect(page).to have_content('Retired acrobatics instructor')
@@ -37,7 +37,7 @@ describe 'Admin updates instructor' do
 
     fill_in 'Nome', with: ''
     fill_in 'Email', with: ''
-    click_on 'Enviar'
+    click_on 'Salvar'
 
     expect(page).to have_content('não pode ficar em branco', count: 2)
   end

@@ -1,23 +1,29 @@
-<%# FIXME : field types %>
-
 <%= form_for @course do |f| %>
-  <%= f.label :name, 'Nome' %><br>
-  <%= f.text_field :name %><br>
-
-  <%= f.label :description, 'Descrição' %><br>
-  <%= f.text_area :description %><br>
-
-  <%= f.label :code, 'Código' %><br>
-  <%= f.text_field :code %><br>
-
-
-  <%= f.label :price, 'Preço' %><br>
-  <%= f.text_field :price %><br>
-
-  <%= f.label :enrollment_deadline, 'Data limite de matrícula' %><br>
-  <%= f.text_field :enrollment_deadline %><br>
-
-  <%= f.submit 'Salvar' %>
+  <div>
+    <%= f.label :name, 'Nome' %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :description, 'Descrição' %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div>
+    <%= f.label :code, 'Código' %><br>
+    <%= f.text_field :code %>
+  </div>
+  <div>
+  <%# FIXME this field currently doesn't accept cents (ex: 49,99) %>
+  <%# FIXME this field displays with dot instead of comma %>
+    <%= f.label :price, 'Preço' %><br>
+    <%= f.number_field :price %> 
+  </div>
+  <div>
+    <%= f.label :enrollment_deadline, 'Data limite de matrícula' %><br>
+    <%= f.date_field :enrollment_deadline %>
+  </div>
+  <div>
+    <%= f.submit 'Salvar' %>
+  </div>
 <% end %>
 
 <%= link_to 'Voltar', courses_path %>

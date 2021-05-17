@@ -3,9 +3,9 @@
 <% else %>
   <% @instructors.each do |instructor| %>
   <div>
-  <h2><%= link_to instructor.name, instructor  %></h2>
-  <h3><%= instructor.email %></h3>
-  <h3><%= instructor.profile_picture %></h3>
+  <h2><%= link_to instructor.name, instructor %></h2>
+  <p><%= instructor.email %></p>
+  <p><%= instructor.profile_picture %></p>
   </div>
   <% end %>
 <% end %>

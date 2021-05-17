@@ -1,20 +1,23 @@
-<%# FIXME : field types %>
-
 <%= form_for @instructor do |f| %>
-  <%= f.label :name, 'Nome' %><br>
-  <%= f.text_field :name %><br>
-
-  <%= f.label :bio, 'Descrição' %><br>
-  <%= f.text_area :bio %><br>
-
-  <%= f.label :email, 'Email' %><br>
-  <%= f.text_field :email %><br>
-
-
-  <%= f.label :profile_picture, 'Foto de perfil' %><br>
-  <%= f.text_field :profile_picture %><br>
-
-  <%= f.submit 'Enviar' %>
+  <div>
+    <%= f.label :profile_picture, 'Foto de perfil' %><br>
+    <%= f.text_field :profile_picture %>
+  </div>
+  <div>
+    <%= f.label :name, 'Nome' %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :bio, 'Descrição' %><br>
+    <%= f.text_area :bio %>
+  </div>
+  <div>
+    <%= f.label :email, 'Email' %><br>
+    <%= f.email_field :email %>
+  </div>
+  <div>
+    <%= f.submit 'Salvar' %>
+  </div>
 <% end %>
 
 <%= link_to 'Voltar', instructors_path %>
