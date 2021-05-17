@@ -19,8 +19,6 @@ describe 'Admin view instructors' do
     click_on 'Professores'
 
     expect(page).to have_content('Andy Carlos')
-    expect(page).to have_content('andy@earth.com')
-    expect(page).to have_content('Software engineer at Google')
     expect(page).to have_content('https://www.random.com/me.png')
   end
 
@@ -52,7 +50,7 @@ describe 'Admin view instructors' do
     visit root_path
     click_on 'Professores'
 
-    expect(page).to have_content('Nenhum professor cadastrado.')
+    expect(page).to have_content('Nenhum professor cadastrado')
   end
 
   it 'and return to home page' do

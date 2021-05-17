@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2021_05_17_020345) do
     t.string "name"
     t.string "email"
     t.text "bio"
-    t.string "profile_picture"
+    t.string "profile_picture" # FIXME : connect this field to active storage
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
