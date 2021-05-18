@@ -46,7 +46,7 @@ class CoursesController < ApplicationController
 
   private
 
-  def course_params # FIXME what's the effect of adding #require ?
+  def course_params 
     params[:course].permit(:name, 
       :description,
       :code,

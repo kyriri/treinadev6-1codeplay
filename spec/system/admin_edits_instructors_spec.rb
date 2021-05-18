@@ -5,30 +5,27 @@ describe 'Admin updates instructor' do
     Instructor.create!(name: 'Andy Carlos', 
                        email: 'andy@earth.com',
                        bio: 'Passionate of stretching, former Cirque du Soleil performer', 
-                      #  profile_picture: 'https://mypicture.com/me.jpg',
                       )
     visit root_path
     click_on 'Professores'
     click_on 'Andy Carlos'
     click_on 'Editar'
 
+    attach_file 'Foto de perfil', Rails.root.join('spec', 'fixtures', 'andy.jpg')
     fill_in 'Nome', with: 'Anderson Carlos'
     fill_in 'Descrição', with: 'Retired acrobatics instructor'
-    fill_in 'Email', with: 'acarlos@coldmail.com'
-    # fill_in 'Foto de perfil', with: 'Empty'
     click_on 'Salvar'
 
+    expect(page).to have_css('img[src*="andy.jpg"]')
     expect(page).to have_content('Anderson Carlos')
     expect(page).to have_content('Retired acrobatics instructor')
-    expect(page).to have_content('acarlos@coldmail.com')
-    # expect(page).to have_content('Empty')
+    expect(page).to have_content('andy@earth.com')
   end
 
   scenario 'and must fill name and email' do
     Instructor.create!(name: 'Andy Carlos', 
                        email: 'andy@earth.com',
                        bio: 'Passionate of stretching, former Cirque du Soleil performer', 
-                      #  profile_picture: 'https://mypicture.com/me.jpg',
                       )
     visit root_path
     click_on 'Professores'

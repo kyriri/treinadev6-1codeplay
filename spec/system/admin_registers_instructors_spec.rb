@@ -14,17 +14,17 @@ describe 'Admin registers instructors' do
     click_on 'Professores'
     click_on 'Registrar um Professor'
 
-    fill_in 'Nome', with: 'Carla Maria'
+    fill_in 'Nome', with: 'Nadya Slobodowska'
     fill_in 'Descrição', with: 'Especialista back-end Ruby on Rails'
-    fill_in 'Email', with: 'c.maria@ggmail.com'
-    # fill_in 'Foto de perfil', with: 'https://www.mypic.com.br/maria.jpg'
+    fill_in 'Email', with: 'nadya.s@fmail.com'
+    attach_file 'Foto de perfil', Rails.root.join('spec', 'fixtures', 'nadya.png')
     click_on 'Cadastrar professor'
 
     expect(current_path).to eq(instructor_path(Instructor.last))
-    expect(page).to have_content('Carla Maria')
+    expect(page).to have_content('Nadya Slobodowska')
     expect(page).to have_content('Especialista back-end Ruby on Rails')
-    expect(page).to have_content('c.maria@ggmail.com')
-    # expect(page).to have_content('https://www.mypic.com.br/maria.jpg')
+    expect(page).to have_content('nadya.s@fmail.com')
+    expect(page).to have_css('img[src*="nadya.png"]')
     expect(page).to have_link('Voltar')
   end
 
@@ -33,7 +33,6 @@ describe 'Admin registers instructors' do
                   name: 'Linda McCarthy', 
                   email: 'mccarthy@aol.com',
                   bio: 'Software engineer at Google', 
-                  # profile_picture: 'https://www.random.com/me.png',
                   )
 
     visit root_path
@@ -41,7 +40,6 @@ describe 'Admin registers instructors' do
     click_on 'Registrar um Professor'
     fill_in 'Nome', with: ''
     fill_in 'Email', with: ''
-    # fill_in 'Foto de perfil', with: ''
     click_on 'Cadastrar professor'
 
     expect(page).to have_content('não pode ficar em branco', count: 2)
@@ -52,7 +50,6 @@ describe 'Admin registers instructors' do
                   name: 'Andy Carlos', 
                   email: 'andy@earth.com',
                   bio: 'Passionate of stretching, former Cirque du Soleil performer', 
-                  # profile_picture: 'https://mypicture.com/me.jpg',
                   )
 
     visit root_path
