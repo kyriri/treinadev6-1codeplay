@@ -31,7 +31,7 @@ class CoursesController < ApplicationController
       redirect_to @course
     else
       flash[:alert] = @course.errors.full_messages.join(" - ") # TODO can we make create and update actions DRYer?
-      render :new
+      render :edit
     end
   end
 
@@ -40,7 +40,7 @@ class CoursesController < ApplicationController
       redirect_to courses_path
     else
       flash[:alert] = "Não foi possível apagar o curso" 
-      render :new
+      redirect_to @course
     end
   end
 
