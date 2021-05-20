@@ -1,10 +1,11 @@
 class CoursesController < ApplicationController
+before_action :find_course, only: %i[show edit update destroy] 
+
   def index
     @courses = Course.all
   end
 
   def show
-    @course = Course.find(params[:id])
   end
 
   def new
@@ -22,11 +23,9 @@ class CoursesController < ApplicationController
   end
 
   def edit
-    @course = Course.find(params[:id])
   end
 
   def update
-    @course = Course.find(params[:id])
     if @course.update(course_params)
       redirect_to @course
     else
@@ -36,7 +35,7 @@ class CoursesController < ApplicationController
   end
 
   def destroy
-    if @course = Course.destroy(params[:id])
+    if @course.destroy
       redirect_to courses_path
     else
       flash[:alert] = "Não foi possível apagar o curso" 
@@ -45,6 +44,10 @@ class CoursesController < ApplicationController
   end
 
   private
+
+  def find_course
+    @course = Course.find(params[:id])
+  end
 
   def course_params 
     params[:course].permit(:name, 
