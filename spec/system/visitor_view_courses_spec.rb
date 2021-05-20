@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Admin view courses' do
+describe 'Visitor view courses' do
   it 'successfully' do
     Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
                    code: 'RUBYBASIC', price: 10,
