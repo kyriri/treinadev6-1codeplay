@@ -20,11 +20,8 @@ describe 'Admin erases courses' do
     click_on 'Ruby Maravilha'
     
     
-    # TODO apply these 3 tests over project, if pertinent 
     # expect(page).to_have text('Curso apagado com successo') 
-    expect(current_path).to eq(courses_path)
     expect { click_on 'Apagar curso' }.to change { Course.count }.by(-1)
-
     expect(current_path).to eq(courses_path)
     expect(page).to_not have_content('Ruby Maravilha')
     expect(page).to_not have_content('Um curso feliz de Ruby')
