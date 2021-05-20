@@ -1,4 +1,6 @@
 class Course < ApplicationRecord
+  belongs_to :instructor
+
   validates :name, 
             :code,
             :price,
