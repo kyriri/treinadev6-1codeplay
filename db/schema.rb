@@ -48,8 +48,6 @@ ActiveRecord::Schema.define(version: 2021_05_20_194310) do
     t.date "enrollment_deadline"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "instructor_id"
-    t.index ["instructor_id"], name: "index_courses_on_instructor_id"
   end
 
   create_table "instructors", force: :cascade do |t|
@@ -58,9 +56,10 @@ ActiveRecord::Schema.define(version: 2021_05_20_194310) do
     t.text "bio"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "course_id"
+    t.index ["course_id"], name: "index_instructors_on_course_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "courses", "instructors"
 end

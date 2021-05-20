@@ -22,18 +22,23 @@ describe 'Visitor view courses' do
   end
 
   it 'and view details' do
+    teacher = Instructor.create!(name: 'Nadya Ferris',
+                                    bio: 'Self-taught Ruby on Rails teacher',
+                                    email: 'ferrisn@coldmail.com')
     course = Course.create!(name: 'Ruby on Rails',
                             description: 'Um curso de Ruby on Rails',
+                            instructor: teacher, 
                             code: 'RUBYONRAILS', 
                             price: 20,
                             enrollment_deadline: '20/12/2033')
 
     visit root_path
     click_on 'Cursos'
-    click_on 'Ruby on Rails'
+    click_on course.name
 
     expect(page).to have_content(course.name)
     expect(page).to have_content(course.description)
+    expect(page).to have_content(course.instructor.name)
     expect(page).to have_content(course.code)
     expect(page).to have_content('R$ 20,00')
     expect(page).to have_content('20/12/2033')

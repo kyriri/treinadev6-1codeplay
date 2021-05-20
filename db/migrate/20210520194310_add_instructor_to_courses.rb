@@ -1,5 +1,7 @@
 class AddInstructorToCourses < ActiveRecord::Migration[6.1]
   def change
-    add_reference :courses, :instructor, foreign_key: true
+    change_table :instructors do |t|
+      t.belongs_to :course
+    end
   end
 end
