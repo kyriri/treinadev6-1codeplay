@@ -1,5 +1,5 @@
 class Course < ApplicationRecord
-  has_one :instructor
+  belongs_to :instructor
   
   validates :name, 
             :code,

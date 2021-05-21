@@ -2,8 +2,12 @@ require 'rails_helper'
 
 describe 'Admin updates course' do
   it 'successfully' do
+    teacher = Instructor.create!(name: 'Nadya Ferris',
+                                 bio: 'Self-taught Ruby on Rails teacher',
+                                 email: 'ferrisn@coldmail.com')
     Course.create!(name: 'Ruby', 
                    description: 'Um curso de Ruby',
+                   instructor: teacher, 
                    code: 'RUBYBASIC', 
                    price: 10,
                    enrollment_deadline: '22/12/2033'
@@ -33,8 +37,12 @@ describe 'Admin updates course' do
   end
 
   scenario 'and must fill in name, code and price' do
+    teacher = Instructor.create!(name: 'Nadya Ferris',
+                                 bio: 'Self-taught Ruby on Rails teacher',
+                                 email: 'ferrisn@coldmail.com')
     Course.create!(name: 'Ruby', 
                    description: 'Um curso de Ruby',
+                   instructor: teacher, 
                    code: 'RUBYBASIC', 
                    price: 10,
                    enrollment_deadline: '22/12/2033'

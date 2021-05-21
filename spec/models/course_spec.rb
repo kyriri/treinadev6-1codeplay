@@ -13,9 +13,15 @@ describe Course do
     end
 
     it 'code must be unique' do
-      Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
-                    code: 'RUBYBASIC', price: 10,
-                    enrollment_deadline: '22/12/2033')
+      teacher = Instructor.create!(name: 'Nadya Ferris',
+                                   bio: 'Self-taught Ruby on Rails teacher',
+                                   email: 'ferrisn@coldmail.com')
+      Course.create!(name: 'Ruby', 
+                     description: 'Um curso de Ruby',
+                     instructor: teacher, 
+                     code: 'RUBYBASIC', 
+                     price: 10,
+                     enrollment_deadline: '22/12/2033')
       course = Course.new(code: 'RUBYBASIC')
 
       course.valid?
