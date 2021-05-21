@@ -23,5 +23,5 @@ describe 'Admin erases instructors' do
     expect(page).to have_content('Andy Carlos')
   end
 
-# TODO create test to simulate deletion error
+# TODO create test to simulate deletion error: hint: create course attached to an instructor, and try to delete instructor
 end

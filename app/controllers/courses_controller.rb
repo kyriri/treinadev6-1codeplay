@@ -10,6 +10,7 @@ before_action :find_course, only: %i[show edit update destroy]
 
   def new
     @course = Course.new
+    @instructors = Instructor.all
   end
 
   def create
@@ -18,6 +19,7 @@ before_action :find_course, only: %i[show edit update destroy]
       redirect_to @course
     else
       flash[:alert] = @course.errors.full_messages.join(" - ")
+      @instructors = Instructor.all
       render :new
     end
   end
@@ -30,7 +32,7 @@ before_action :find_course, only: %i[show edit update destroy]
       redirect_to @course
     else
       flash[:alert] = @course.errors.full_messages.join(" - ") # TODO can we make create and update actions DRYer?
-      render :edit
+      render :edit # FIXME flash doesn't go well with render -> flash.now better
     end
   end
 
@@ -51,10 +53,11 @@ before_action :find_course, only: %i[show edit update destroy]
 
   def course_params 
     params[:course].permit(:name, 
-      :description,
-      :code,
-      :price,
-      :enrollment_deadline,
-      )
+                           :description,
+                           :instructor_id,
+                           :code,
+                           :price,
+                           :enrollment_deadline,
+                          )
   end
 end

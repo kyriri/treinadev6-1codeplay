@@ -8,6 +8,11 @@
     <%= f.text_area :description %>
   </div>
   <div>
+    <%= f.label :instructor_id, 'Professor' %><br>
+    <%= f.collection_select :instructor_id, @instructors, :id, :display_name %>
+  <%# TODO include_blank %>
+  </div>
+  <div>
     <%= f.label :code, 'Código' %><br>
     <%= f.text_field :code %>
   </div>

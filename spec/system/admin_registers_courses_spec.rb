@@ -10,12 +10,16 @@ describe 'Admin registers courses' do
   end
 
   it 'successfully' do
+    teacher = Instructor.create!(name: 'Andy Carlos',
+                                 bio: 'Um cara do contra: aprendeu C, depois Python, depois Ruby',
+                                 email: 'andy_carlos@coldmail.com')
     visit root_path
     click_on 'Cursos'
     click_on 'Registrar um Curso'
 
     fill_in 'Nome', with: 'Ruby on Rails'
     fill_in 'Descrição', with: 'Um curso de Ruby on Rails'
+    select 'Andy Carlos - andy_carlos@coldmail.com', from: 'Professor'
     fill_in 'Código', with: 'RUBYONRAILS'
     fill_in 'Preço', with: '30'
     fill_in 'Data limite de matrícula', with: '22/12/2033'
@@ -24,6 +28,7 @@ describe 'Admin registers courses' do
     expect(current_path).to eq(course_path(Course.last))
     expect(page).to have_content('Ruby on Rails')
     expect(page).to have_content('Um curso de Ruby on Rails')
+    expect(page).to have_content('Andy Carlos')
     expect(page).to have_content('RUBYONRAILS')
     expect(page).to have_content('R$ 30,00')
     expect(page).to have_content('22/12/2033')
@@ -31,8 +36,14 @@ describe 'Admin registers courses' do
   end
 
   it 'and attributes cannot be blank' do
-    Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
-                   code: 'RUBYBASIC', price: 10,
+    teacher = Instructor.create!(name: 'Andy Carlos',
+                                 bio: 'Um cara do contra: aprendeu C, depois Python, depois Ruby',
+                                 email: 'andy_carlos@coldmail.com')
+    Course.create!(name: 'Ruby', 
+                   description: 'Um curso de Ruby',
+                   instructor: teacher, 
+                   code: 'RUBYBASIC', 
+                   price: 10,
                    enrollment_deadline: '22/12/2033')
 
     visit root_path
@@ -49,8 +60,14 @@ describe 'Admin registers courses' do
   end
 
   it 'and code must be unique' do
-    Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
-                   code: 'RUBYBASIC', price: 10,
+    teacher = Instructor.create!(name: 'Andy Carlos',
+                                 bio: 'Um cara do contra: aprendeu C, depois Python, depois Ruby',
+                                 email: 'andy_carlos@coldmail.com')
+    Course.create!(name: 'Ruby', 
+                   description: 'Um curso de Ruby',
+                   instructor: teacher, 
+                   code: 'RUBYBASIC', 
+                   price: 10,
                    enrollment_deadline: '22/12/2033')
 
     visit root_path
