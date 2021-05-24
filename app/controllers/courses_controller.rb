@@ -6,6 +6,7 @@ before_action :find_course, only: %i[show edit update destroy]
   end
 
   def show
+    @lessons = Lesson.where("course_id = #{params[:id]}")
   end
 
   def new

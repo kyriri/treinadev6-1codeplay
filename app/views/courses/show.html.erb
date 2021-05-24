@@ -7,6 +7,18 @@
 <h3><%= @course.enrollment_deadline.strftime('%d/%m/%Y') %></h3>
 </div>
 
-<%= link_to 'Voltar', courses_path %>
 <%= link_to 'Apagar curso', course_path(@course), method: :delete %>
-<%= link_to 'Editar', edit_course_path(@course) %>
+<%= link_to 'Editar curso', edit_course_path(@course) %>
+
+ <% if @lessons.empty? %>
+  <p>Nenhum aula cadastrada ainda</p>
+ <% else %>
+  <dl>
+  <% @lessons.each do |lesson| %>
+    <dt>Aula <%= lesson.number %></dt>
+    <dd><%= lesson.name %></dd>
+  <% end %>
+  </dl> 
+ <% end %>
+
+<%= link_to 'Voltar', courses_path %>
