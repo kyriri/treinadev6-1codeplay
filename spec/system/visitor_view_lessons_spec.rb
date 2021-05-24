@@ -24,9 +24,7 @@ describe 'Visitor views list of lessons' do
                              name: 'A influência Italiana',
                              course: another_course)
 
-    visit root_path
-    click_on 'Cursos'
-    click_on 'A arquitetura de Lina Bo Bardi'
+    visit course_path(course)
 
     expect(page).to have_content('Introdução')
     expect(page).to have_content('A formação do acervo do MASP')

@@ -21,4 +21,19 @@
   </dl> 
  <% end %>
 
+ <%# <%= form_with model: @lesson, url: course_lessons_path(@course) do |f| %> %>
+ <%= form_with model: [@course, @lesson] do |f| %>
+  <div>
+    <%= f.label :number, 'Número da aula' %><br>
+    <%= f.number_field :number %>
+  </div>
+  <div>
+    <%= f.label :name, 'Nome' %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.submit 'Registrar aula' %>
+  </div>
+<% end %>
+
 <%= link_to 'Voltar', courses_path %>

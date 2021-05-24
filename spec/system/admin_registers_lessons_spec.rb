@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-xdescribe 'Admin registers lessons' do
+describe 'Admin registers lessons' do
   it 'from course page' do
     teacher = Instructor.create!(name: 'Renato Anelli',
                                  email: 'anelli@usp.com.br')
@@ -10,8 +10,7 @@ xdescribe 'Admin registers lessons' do
                             enrollment_deadline: '05/07/2024',
                             price: 0)
 
-    visit courses_path
-    click_on 'A arquitetura de Lina Bo Bardi'
+    visit course_path(course)
     fill_in 'Número da aula', with: '3'
     fill_in 'Nome', with: 'Primeiros esboços'
     click_on 'Registrar aula'
