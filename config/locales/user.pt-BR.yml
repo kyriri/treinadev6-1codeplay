@@ -8,4 +8,13 @@ pt-BR:
     attributes:
       user:
         password: Senha
-        # password_confirmation: Confirmar senha
+        password_confirmation: Confirmar senha
+  devise:
+    registrations:
+      new:
+        title: Criar conta
+        min_chars: Deve ter ao menos %{count} caracteres
+        submit: Criar conta
+  layouts:
+    application:
+      log_out: Sair

@@ -12,7 +12,12 @@
 
   <body>
     <nav>
-      <%= link_to 'Criar conta', new_user_registration_path %>
+      <% if user_signed_in? %>
+        <%= current_user.email %>
+        <%= link_to t('.log_out'), destroy_user_session_path %> # TODO test log out
+      <% else %>
+        <%= link_to 'Criar conta', new_user_registration_path %>
+      <% end %>
     </nav>
     <p class="notice"><%= flash[:notice] %></p>
     <p class="alert"><%= flash[:alert] %></p>
