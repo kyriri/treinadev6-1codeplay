@@ -65,12 +65,11 @@ describe 'Account management' do
 
   context 'sign out' do
     it 'succesfully' do
+      test_user = User.create!(email: 'jane_doe@coldmail.com',
+                               password: 'love-me_love-me',
+                              )
+      login_as test_user, scope: :user # TODO update tests so only logged in users can perform sensitive tasks
       visit root_path
-      click_on 'Criar conta'
-      fill_in 'Email', with: 'jane_doe@coldmail.com'
-      fill_in 'Senha', with: '12345678'
-      fill_in 'Confirmar senha', with: '12345678'
-      click_button 'Criar conta'
       click_link 'Sair'
 
       expect(page).to have_text('Saiu com sucesso.')
