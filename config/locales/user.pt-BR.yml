@@ -15,6 +15,11 @@ pt-BR:
         title: Criar conta
         min_chars: Deve ter ao menos %{count} caracteres
         submit: Criar conta
+    sessions:
+      new:
+        sign_in: Entrar
   layouts:
     application:
+      register: Criar conta
+      sign_in: Entrar
       log_out: Sair
