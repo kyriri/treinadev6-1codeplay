@@ -9,5 +9,7 @@ Rails.application.routes.draw do
   resources :instructors 
   resources :courses do
     resources :lessons
+    post 'enroll', on: :member
+    get 'mine', on: :collection
   end
 end

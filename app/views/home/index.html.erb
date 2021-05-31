@@ -3,3 +3,8 @@
 
 <%= link_to 'Cursos', courses_path %>
 <%= link_to 'Professores', instructors_path %>
+
+<h3>Cursos disponíveis</h3>
+<% @available_courses.each do |course| %>
+  <div><%= link_to course.name, course %></div>
+<% end %>

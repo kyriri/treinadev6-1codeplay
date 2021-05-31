@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-before_action :find_course, only: %i[show edit update destroy] 
+before_action :find_course, only: %i[show edit update destroy enroll] 
 
   def index
     @courses = Course.all
@@ -45,6 +45,15 @@ before_action :find_course, only: %i[show edit update destroy]
       flash[:alert] = "Não foi possível apagar o curso" 
       redirect_to @course
     end
+  end
+
+  def enroll
+    Enrollment.create(user: current_user, course: @course)
+    redirect_to mine_courses_path, notice: 'Curso comprado com sucesso'
+  end
+
+  def mine
+    @user_enrollments = current_user.enrollments
   end
 
   private

@@ -5,6 +5,7 @@
 <h3><%= @course.code %></h3>
 <h3><%= number_to_currency @course.price, unit: 'R$', separator: ',', delimiter: '.', format: '%u %n' %></h3>
 <h3><%= @course.enrollment_deadline.strftime('%d/%m/%Y') %></h3>
+<%= link_to 'Comprar', enroll_course_path, method: :post %>
 </div>
 
 <%= link_to 'Apagar curso', course_path(@course), method: :delete %>
