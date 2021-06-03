@@ -1,7 +1,5 @@
 require 'rails_helper'
 
-# video: 1:48:22
-
 describe 'Courses API' do
   context 'GET /api/v1/courses' do
     it 'should return courses' do
@@ -100,13 +98,18 @@ describe 'Courses API' do
       
       expect(response.body).to include('RUBYDEEP')
       expect(response.body).to_not include('RUBYBASIC')
-
+        
       expect(parsed_body.count).to eq(1)
       expect(parsed_body[0]['name']).to eq('Ruby Profundo')
       expect(parsed_body[0]).to_not have_key('id')
       expect(parsed_body[0]).to_not have_key('created_at')
       expect(parsed_body[0]).to_not have_key('updated_at')
       expect(parsed_body[0]['instructor']).to_not have_key('id')
+    end
+
+    it 'can\'t find course' do
+      get '/api/v1/courses/RUBYSHALLOW'
+      expect(response).to have_http_status(404)
     end
   end
 end
