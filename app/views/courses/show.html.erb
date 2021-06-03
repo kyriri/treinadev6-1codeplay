@@ -12,13 +12,13 @@
 <%= link_to 'Editar curso', edit_course_path(@course) %>
 
  <% if @lessons.empty? %>
-  <p>Nenhum aula cadastrada ainda</p>
+  <p>Nenhuma aula cadastrada ainda</p>
  <% else %>
   <dl>
-  <% @lessons.each do |lesson| %>
-    <dt>Aula <%= lesson.number %></dt>
-    <dd><%= lesson.name %></dd>
-  <% end %>
+    <% @lessons.each do |lesson| %>
+      <dt>Aula <%= lesson.number %></dt>
+      <dd><%= lesson.name %></dd>
+    <% end %>
   </dl> 
  <% end %>
 

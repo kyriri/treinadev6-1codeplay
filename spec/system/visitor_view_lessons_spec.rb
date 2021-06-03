@@ -43,7 +43,7 @@ describe 'Visitor views list of lessons' do
     visit courses_path
     click_on 'A arquitetura de Lina Bo Bardi'
 
-    expect(page).to have_content('Nenhum aula cadastrada')
+    expect(page).to have_content('Nenhuma aula cadastrada')
   end
   
 end
