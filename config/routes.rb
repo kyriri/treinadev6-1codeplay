@@ -12,4 +12,11 @@ Rails.application.routes.draw do
     post 'enroll', on: :member
     get 'mine', on: :collection
   end
+  
+  # get '/api/v1/courses', to: 'courses#index_api'
+  namespace :api do
+    namespace :v1 do
+      resources :courses, only: %i[index show], param: :code
+    end
+  end
 end
