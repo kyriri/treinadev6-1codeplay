@@ -112,4 +112,41 @@ describe 'Courses API' do
       expect(response).to have_http_status(404)
     end
   end
+
+  context 'POST /api/v1/courses' do
+    it 'should create a course' do
+      teacher = Instructor.create!(name: 'Nadya Ferris',
+                                  bio: 'Self-taught Ruby on Rails teacher',
+                                  email: 'ferrisn@coldmail.com')
+  
+      post '/api/v1/courses', params: {course: {
+                                        name: 'Baking awesome cupcakes',
+                                        code: 'CUP101',
+                                        price: 51,
+                                        instructor_id: teacher.id
+                                      } }
+  
+      expect(response).to have_http_status(201)
+      expect(response.content_type).to include('application/json')
+      
+      expect(parsed_body['name']).to eq('Baking awesome cupcakes')
+      expect(parsed_body['code']).to eq('CUP101')
+      expect(parsed_body['price'].to_f).to eq(51)
+      expect(parsed_body['id']).to_not be_nil
+      expect(parsed_body['instructor_id']).to_not be_nil
+    end
+
+    it 'fails to create a course due to lacking fields' do
+      post '/api/v1/courses', params: {course: {
+                                        name: 'Baking awesome cupcakes',
+                                        code: 'CUP101',
+                                        price: 51,
+                                      } }
+        expect(response).to have_http_status(406)
+    end
+  end
+end
+
+def parsed_body
+  JSON.parse(response.body)
 end

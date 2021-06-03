@@ -26,4 +26,28 @@ class Api::V1::CoursesController < ActionController::API
     # rescue ActiveRecord::RecordNotFound
     #   head 404
   end
+
+  def create
+    @new_course = Course.new(course_params)
+    # @new_course.save! # the bang make sure the object was saved to the database
+    @new_course.save
+    if @new_course.persisted?
+      render json: @new_course, status: 201 # :created
+    else
+      head 406
+    end
+  end
+
+  private
+
+  def course_params
+    params[:course].permit(:name, 
+                           :description,
+                           :instructor_id,
+                           :code,
+                           :price,
+                           :enrollment_deadline,
+                          )
+    
+  end
 end

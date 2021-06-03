@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   # get '/api/v1/courses', to: 'courses#index_api'
   namespace :api do
     namespace :v1 do
-      resources :courses, only: %i[index show], param: :code
+      resources :courses, only: %i[index show create], param: :code
     end
   end
 end
