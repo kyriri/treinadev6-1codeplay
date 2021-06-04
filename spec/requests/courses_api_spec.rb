@@ -181,8 +181,8 @@ context 'DELETE /api/v1/courses/:code' do
                                     )  
     delete "/api/v1/courses/#{another_course.code}"
 
-    expect(response).to have_http_status(204)
-    # expect(response.body).to include('Succesfully deleted')
+    expect(response).to have_http_status(200)
+    expect(response.body).to include('Course deleted')
     expect(one_course).to_not be_nil
     expect(Course.find_by(id: another_course.id)).to be_nil
   end

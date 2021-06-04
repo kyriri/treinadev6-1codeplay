@@ -41,7 +41,7 @@ class Api::V1::CoursesController < ActionController::API
   def destroy
     @course = Course.find_by!(code: params[:code])
     @course.destroy
-    render json: 'Succesfully deleted', status: 204
+    render json: { notice: "Course deleted. " }, status: 200
   rescue ActiveRecord::RecordNotFound
       head 400
   end
