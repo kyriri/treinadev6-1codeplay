@@ -147,6 +147,49 @@ describe 'Courses API' do
   end
 end
 
+context 'PATCH /api/v1/courses/:code' do # or PUT?
+  it 'succesfully' do
+  end
+
+  it 'has invalid fields' do
+  end  
+end
+
+context 'DELETE /api/v1/courses/:code' do
+  it 'succesfully' do
+    teacher = Instructor.create!(name: 'Nadya Ferris',
+                                  bio: 'Self-taught Ruby on Rails teacher',
+                                  email: 'ferrisn@coldmail.com'
+                                )
+    one_course = Course.create!(name: 'Ruby Maravilha', 
+                                description: 'Um curso feliz de Ruby',
+                                instructor: teacher, 
+                                code: 'RUBYBASIC', 
+                                price: 10,
+                                enrollment_deadline: 1.day.from_now
+                                )                       
+    another_course = Course.create!(name: 'Ruby Profundo', 
+                                    description: 'Um curso que te leva até as profundezas do Ruby',
+                                    instructor: teacher, 
+                                    code: 'RUBYDEEP', 
+                                    price: 35,
+                                    enrollment_deadline: 2.years.ago
+                                    )  
+    delete "/api/v1/courses/#{another_course.code}"
+
+    expect(response).to have_http_status(204)
+    # expect(response.body).to include('Succesfully deleted')
+    expect(one_course).to_not be_nil
+    expect(Course.find_by(id: another_course.id)).to be_nil
+  end
+
+  it 'can\'t find entity to delete' do
+    delete "/api/v1/courses/BARISTA"
+
+    expect(response).to have_http_status(400)
+  end
+end
+
 def parsed_body
   JSON.parse(response.body)
 end

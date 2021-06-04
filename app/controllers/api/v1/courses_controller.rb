@@ -38,6 +38,14 @@ class Api::V1::CoursesController < ActionController::API
     end
   end
 
+  def destroy
+    @course = Course.find_by!(code: params[:code])
+    @course.destroy
+    render json: 'Succesfully deleted', status: 204
+  rescue ActiveRecord::RecordNotFound
+      head 400
+  end
+
   private
 
   def course_params
@@ -48,6 +56,5 @@ class Api::V1::CoursesController < ActionController::API
                            :price,
                            :enrollment_deadline,
                           )
-    
   end
 end
