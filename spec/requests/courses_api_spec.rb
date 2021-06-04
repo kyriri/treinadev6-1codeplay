@@ -35,6 +35,10 @@ describe 'Courses API' do
       expect(parsed_body[0]).to_not have_key('created_at')
       expect(parsed_body[0]).to_not have_key('updated_at')
       expect(parsed_body[0]['instructor']).to_not have_key('id')
+      expect(parsed_body[0]['instructor']).to_not have_key('created_at')
+      expect(parsed_body[0]['instructor']).to_not have_key('updated_at')
+      expect(parsed_body[0]['instructor']).to have_key('name')
+      expect(parsed_body[0]['instructor']).to have_key('bio')
     end
 
     it 'returns no courses' do

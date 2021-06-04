@@ -5,7 +5,7 @@ class Api::V1::CoursesController < ActionController::API
     # render json: @courses.to_json, status: 200
     render json: @courses.as_json(
       except: [:id, :created_at, :updated_at, :instructor_id],
-      include: { instructor: { except: :id } }
+        include: { instructor: { only: %i[name bio] } }
      )
   end
 
@@ -16,8 +16,8 @@ class Api::V1::CoursesController < ActionController::API
       head 404
     else
       render json: @course.as_json(
-        except: [:id, :created_at, :updated_at, :instructor_id],
-        include: { instructor: { except: :id } }
+        except: %i[id created_at updated_at instructor_id],
+        include: { instructor: { only: %i[name bio] } }
       )
     end
     
