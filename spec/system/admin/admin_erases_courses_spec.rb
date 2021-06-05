@@ -27,7 +27,7 @@ describe 'Admin erases courses' do
     
     # expect(page).to_have text('Curso apagado com successo') 
     expect { click_on 'Apagar curso' }.to change { Course.count }.by(-1)
-    expect(current_path).to eq(courses_path)
+    expect(current_path).to eq(admin_courses_path)
     expect(page).to_not have_content('Ruby Maravilha')
     expect(page).to_not have_content('Um curso feliz de Ruby')
     expect(page).to_not have_content('RUBYBASIC')

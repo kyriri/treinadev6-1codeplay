@@ -1,4 +1,4 @@
-class CoursesController < ApplicationController
+class Admin::CoursesController < ApplicationController
 before_action :find_course, only: %i[show edit update destroy enroll] 
 
   def index
@@ -40,7 +40,7 @@ before_action :find_course, only: %i[show edit update destroy enroll]
 
   def destroy
     if @course.destroy
-      redirect_to courses_path
+      redirect_to admin_courses_path
     else
       flash[:alert] = "Não foi possível apagar o curso" 
       redirect_to @course

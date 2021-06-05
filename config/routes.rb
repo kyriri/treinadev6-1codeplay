@@ -6,8 +6,13 @@ Rails.application.routes.draw do
   devise_for :users
   # resources :users, only %i[show]
 
+  namespace :admin do
+    resources :courses do
+    end
+  end
+
   resources :instructors 
-  resources :courses do
+  resources :courses, only: %i[show] do
     resources :lessons
     post 'enroll', on: :member
     get 'mine', on: :collection

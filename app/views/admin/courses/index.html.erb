@@ -3,7 +3,8 @@
 <% else %>
   <% @courses.each do |course| %>
   <div>
-  <h2><%= link_to course.name, course  %></h2>
+  <h2><%= link_to course.name, [:admin, course]  %></h2> 
+      <%# link_to course.name, admin_course_path(course) %>
   <h3><%= course.description %></h3>
   <h3><%= course.code %></h3>
   <h3><%= number_to_currency course.price, unit: 'R$', separator: ',', delimiter: '.', format: '%u %n' %></h3>
@@ -12,4 +13,4 @@
 <% end %>
 
 <%= link_to 'Voltar', root_path %>
-<%= link_to 'Registrar um Curso', new_course_path %>
+<%= link_to 'Registrar um Curso', new_admin_course_path %>
