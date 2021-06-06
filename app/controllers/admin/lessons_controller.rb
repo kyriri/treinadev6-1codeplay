@@ -1,4 +1,4 @@
-class LessonsController < ApplicationController
+class Admin::LessonsController < ApplicationController
 
   def create
     @course = Course.find(params[:course_id])
@@ -6,7 +6,7 @@ class LessonsController < ApplicationController
     @lesson = Lesson.new(lesson_params)
     @lesson.course = @course
     @lesson.save!
-    redirect_to course_path(@course)
+    redirect_to admin_course_path(@course)
   end
 
   private

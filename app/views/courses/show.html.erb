@@ -22,8 +22,8 @@
   </dl> 
  <% end %>
 
- <%= form_with model: [:admin, @course, @lesson] do |f| %>
- <%# <%= form_with model: @lesson, url: admin_course_lessons_path(@course) do |f| %> %>
+ <%# <%= form_with model: @lesson, url: course_lessons_path(@course) do |f| %> %>
+ <%= form_with model: [@course, @lesson] do |f| %>
   <div>
     <%= f.label :number, 'Número da aula' %><br>
     <%= f.number_field :number %>

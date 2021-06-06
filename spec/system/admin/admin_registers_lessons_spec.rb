@@ -10,7 +10,7 @@ describe 'Admin registers lessons' do
                             enrollment_deadline: '05/07/2024',
                             price: 0)
 
-    visit course_path(course)
+    visit admin_course_path(course)
     fill_in 'Número da aula', with: '3'
     fill_in 'Nome', with: 'Primeiros esboços'
     click_on 'Registrar aula'

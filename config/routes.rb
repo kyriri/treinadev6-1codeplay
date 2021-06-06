@@ -8,12 +8,13 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :courses do
+      resources :lessons
     end
   end
 
   resources :instructors 
   resources :courses, only: %i[show] do
-    resources :lessons
+    resources :lessons, only: %i[show]
     post 'enroll', on: :member
     get 'mine', on: :collection
   end
