@@ -65,10 +65,12 @@ describe 'Account management' do
 
   context 'sign out' do
     it 'succesfully' do
-      test_user = User.create!(email: 'jane_doe@coldmail.com',
-                               password: 'love-me_love-me',
-                              )
-      login_as test_user, scope: :user # TODO update tests so only logged in users can perform sensitive tasks
+      # test_user = User.create!(email: 'jane_doe@coldmail.com',
+      #                          password: 'love-me_love-me',
+      #                         )
+      # login_as test_user, scope: :user # TODO update tests so only logged in users can perform sensitive tasks
+      
+      user_login
       visit root_path
       click_link 'Sair'
 
