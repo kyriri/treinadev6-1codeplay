@@ -141,12 +141,14 @@ describe 'Courses API' do
     end
 
     it 'fails to create a course due to lacking fields' do
-      post '/api/v1/courses', params: {course: {
-                                        name: 'Baking awesome cupcakes',
-                                        code: 'CUP101',
-                                        price: 51,
-                                      } }
-        expect(response).to have_http_status(406)
+      post '/api/v1/courses', params: { course: { chocolate: 10 } }
+        expect(response).to have_http_status(422) # unprocessable entity
+        expect(response.content_type).to include('application/json')
+      
+        expect(parsed_body['name']).to include('não pode ficar em branco')
+        expect(parsed_body['code']).to include('não pode ficar em branco')
+        expect(parsed_body['price']).to include('não pode ficar em branco')
+        # expect(parsed_body['instructor']).to include('é obrigatório')
     end
   end
 end
